@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <block class="Devall\DavidOtarashvili\Block\Block"
+                   name="devall.david.otarashvili.example"
+                   template="Devall_DavidOtarashvili::example.phtml" />
+
+            <block name="new.viewmodel"
+                   template="Devall_DavidOtarashvili::viewmodel.phtml">
+                <arguments>
+                    <argument name="view.model" xsi:type="object">Devall\DavidOtarashvili\ViewModel\User</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+</page>
