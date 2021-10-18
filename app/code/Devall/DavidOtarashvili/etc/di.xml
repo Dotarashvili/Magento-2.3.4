@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Catalog\Model\Product">
+        <plugin name="hidebutton" type="Devall\DavidOtarashvili\Plugin\HideButton" sortOrder="1" disabled="false" />
+    </type>
+    <preference for="Devall\DavidOtarashvili\Api\Data\CompanyInterface" type="Devall\DavidOtarashvili\Model\Company" />
+    <preference for="Devall\DavidOtarashvili\Api\Data\CompanySearchResultInterface" type="Devall\DavidOtarashvili\Model\CompanySearchResult" />
+    <preference for="Devall\DavidOtarashvili\Api\CompanyRepositoryInterface" type="Devall\DavidOtarashvili\Model\CompanyRepository" />
+</config>

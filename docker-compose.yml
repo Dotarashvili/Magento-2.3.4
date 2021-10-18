@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   phpfpm:
-    image: otarashvili/php:7.3-fpm
+    image: david/php:7.4-fpm
     ports:
       - "2222:22"
     volumes: &appvolumes
@@ -17,7 +17,7 @@ services:
       - localswarm
 
   phpfpm_xdebug:
-    image: otarashvili/php:7.3-fpm
+    image: david/php:7.4-fpm
     volumes: *appvolumes
     depends_on:
       - phpfpm
