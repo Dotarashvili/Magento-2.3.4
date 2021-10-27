@@ -46,7 +46,8 @@ class AddData implements DataPatchInterface
     {
         $this->moduleDataSetup->startSetup();
         $companyDTO = $this->companyFactory->create();
-        $companyDTO->setName('Test');
+        $companyDTO->setName('Test')->setCountry('USA')->setStreet('North Kierland Blvd')->
+        setStreetNum('14')->setSize(4);
         $this->companyResource->save($companyDTO);
         $this->moduleDataSetup->endSetup();
     }
