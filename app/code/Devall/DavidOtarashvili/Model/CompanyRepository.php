@@ -9,6 +9,7 @@ use Devall\DavidOtarashvili\Model\ResourceModel\Company;
 use Devall\DavidOtarashvili\Model\ResourceModel\Company\CollectionFactory;
 use Magento\Framework\Api\SearchCriteria\CollectionProcessorInterface;
 use Magento\Framework\Api\SearchCriteriaInterface;
+use Magento\Framework\Exception\AlreadyExistsException;
 use Magento\Framework\Exception\CouldNotDeleteException;
 use Magento\Framework\Exception\CouldNotSaveException;
 use Magento\Framework\Exception\LocalizedException;
@@ -42,6 +43,13 @@ class CompanyRepository implements CompanyRepositoryInterface
      */
     private $companySearchResultInterfaceFactory;
 
+    /**
+     * @param CompanyFactory $companyFactory
+     * @param Company $companyResource
+     * @param CollectionFactory $companyCollectionFactory
+     * @param CollectionProcessorInterface $collectionProcessor
+     * @param CompanySearchResultInterfaceFactory $companySearchResultInterfaceFactory
+     */
     public function __construct(
         CompanyFactory $companyFactory,
         Company $companyResource,
@@ -56,6 +64,11 @@ class CompanyRepository implements CompanyRepositoryInterface
         $this->companySearchResultInterfaceFactory = $companySearchResultInterfaceFactory;
     }
 
+    /**
+     * @param int $id
+     * @return CompanyInterface|\Devall\DavidOtarashvili\Model\Company
+     * @throws NoSuchEntityException
+     */
     public function getById($id)
     {
         $company = $this->companyFactory->create();
@@ -66,12 +79,22 @@ class CompanyRepository implements CompanyRepositoryInterface
         return $company;
     }
 
+    /**
+     * @param CompanyInterface $company
+     * @return CompanyInterface
+     * @throws AlreadyExistsException
+     */
     public function save(CompanyInterface $company)
     {
         $this->companyResource->save($company);
         return $company;
     }
 
+    /**
+     * @param CompanyInterface $company
+     * @return bool
+     * @throws CouldNotDeleteException
+     */
     public function delete(CompanyInterface $company)
     {
         try {
@@ -84,6 +107,10 @@ class CompanyRepository implements CompanyRepositoryInterface
         return true;
     }
 
+    /**
+     * @param SearchCriteriaInterface $searchCriteria
+     * @return CompanySearchResultInterface
+     */
     public function getList(SearchCriteriaInterface $searchCriteria)
     {
         $collection = $this->companyCollectionFactory->create();

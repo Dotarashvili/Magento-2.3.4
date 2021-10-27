@@ -2,8 +2,13 @@
 
 namespace Devall\DavidOtarashvili\Block;
 
-class Block extends \Magento\Framework\View\Element\Template
+use Magento\Framework\View\Element\Template;
+
+class Block extends Template
 {
+    /**
+     * @return string
+     */
     public function getString(){
         return "String from a block";
     }
