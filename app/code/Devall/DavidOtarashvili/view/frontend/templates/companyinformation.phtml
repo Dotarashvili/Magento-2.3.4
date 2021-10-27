@@ -1,0 +1,36 @@
+<?php
+/** @var Edit $block */
+
+use Devall\DavidOtarashvili\Block\Company\Edit;
+
+?>
+<div class="block block-dashboard-company">
+    <div class="block-title">
+        <strong><?= $block->escapeHtml(__('Company Information')) ?></strong>
+        <a class="action edit" href="http://example.com/company/company/edit/"><span><?= $block->escapeHtml(__('Change Company')) ?></span></a>
+    </div>
+    <div class="block-content">
+        <div class="box box-billing-address">
+            <strong class="box-title">
+                <span><?= $block->escapeHtml(__('This is your company:')) ?></span>
+            </strong>
+            <div class="box-content">
+                <div>
+                    <?= $block->getCompanyInformation()->getName() ?>
+                </div>
+                <div>
+                    <?= $block->getCompanyInformation()->getCountry() ?>
+                </div>
+                <div>
+                    <?= $block->getCompanyInformation()->getStreet() ?>
+                </div>
+                <div>
+                    <?= $block->getCompanyInformation()->getStreetNum() ?>
+                </div>
+                <div>
+                    <?= $block->getCompanyInformation()->getSize() ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

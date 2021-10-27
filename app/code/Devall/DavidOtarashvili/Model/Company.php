@@ -106,6 +106,9 @@ class Company extends AbstractExtensibleModel implements CompanyInterface
         return $this->setData(self::SIZE, $size);
     }
 
+    /**
+     *
+     */
     protected function _construct()
     {
         $this->_init(ResourceModel\Company::class);
