@@ -5,5 +5,8 @@
             <route id="devall_davidotarashvili" frontName="devall">
                 <module name="Devall_DavidOtarashvili" />
             </route>
+            <route id="company" frontName="company">
+                <module name="Devall_DavidOtarashvili" />
+            </route>
         </router>
 </config>

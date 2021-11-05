@@ -1,0 +1,31 @@
+<?php
+/**
+ * @var Edit $block
+ */
+use Devall\DavidOtarashvili\Block\Company\Edit;
+?>
+<?php
+    $companyOptions = $block->getCompanyOptions();
+
+?>
+<form action="<?= $block->escapeUrl($block->getSaveUrl()) ?>" method="post">
+    <div>
+        <label class="label" for="companies">Select Company</label>
+        <select name="companies" id="companies">
+            <option value=<?php echo $block->getCompanyInformation()->getId()?>selected>
+                <?php echo $block->getCompanyInformation()->getName() ?></option>
+            <?php foreach ($companyOptions as $companyOption) : ?>
+               <option value=<?php echo $companyOption->getId(); ?>><?php echo $companyOption->getName() ?></option>
+            <?php endforeach; ?>
+        </select>
+    </div>
+    <div>
+        <button type="submit"
+                class="action save primary"
+                title="<?= $block->escapeHtmlAttr(__('Save Company')) ?>">
+            <span><?= $block->escapeHtml(__('Save Company')) ?></span>
+        </button>
+    </div>
+</form>
+
+
