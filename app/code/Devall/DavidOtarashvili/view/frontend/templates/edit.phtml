@@ -1,0 +1,59 @@
+<?php
+/**
+ * @var Edit $block
+ */
+use Devall\DavidOtarashvili\Block\Company\Edit;
+?>
+<?php
+$companyOptions = $block->getCompanyOptions();
+
+?>
+<form action="<?= $block->escapeUrl($block->getSaveUrl()) ?>" method="post">
+    <div>
+        <label class="label" for="company">Select Company</label>
+        <select name="companies" id="companies" >
+            <option value=<?php echo $block->getCompanyInformation()->getId()?>selected>
+                <?php echo $block->getCompanyInformation()->getName() ?></option>
+            <?php foreach ($companyOptions as $companyOption) : ?>
+                <option value=<?php echo $companyOption->getId(); ?>><?php echo $companyOption->getName() ?></option>
+            <?php endforeach; ?>
+        </select>
+    </div>
+    <div id="custom-component" data-bind="scope:'customcomponent'">
+        <!-- ko template: getTemplate() --><!-- /ko -->
+    </div>
+    <div>
+        <button type="submit"
+                class="action save primary"
+                title="<?= $block->escapeHtmlAttr(__('Save Company')) ?>">
+            <span><?= $block->escapeHtml(__('Save Company')) ?></span>
+        </button>
+    </div>
+</form>
+<script type="text/x-magento-init">
+    {
+        "#custom-component": {
+            "Magento_Ui/js/core/app": {
+               "components": {
+                    "customcomponent": {
+                        "component": "Devall_DavidOtarashvili/js/edit",
+                        "config": {
+                            "ourCountry" : "<?=  $block->getCompanyInformation()->getCountry() ?>",
+                            "ourStreet" : "<?=  $block->getCompanyInformation()->getStreet() ?>",
+                            "ourStreetNum" : "<?=  $block->getCompanyInformation()->getStreetNum() ?>",
+                            "ourSize" : "<?=  $block->getCompanyInformation()->getSize() ?>",
+                            "restApi" : "http://example.com/rest/V1/devall_davidotarashvili/<?=
+    $block->getCompanyInformation()->getId() ?>",
+                            "template": "Devall_DavidOtarashvili/edit"
+
+                        }
+                    }
+                }
+            }
+        }
+    }
+</script>
+
+
+
+
